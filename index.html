@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebound Solutions — Turning Returns into Revenue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gd: #1e3d22;
+  --gm: #2d5c32;
+  --ga: #5a9e3b;
+  --gl: #8abe52;
+  --gl2: #a8d06a;
+  --cream: #f3f0e6;
+  --warm: #f9f7f1;
+  --td: #12200f;
+  --tm: #3d5239;
+  --ts: #7a9075;
+  --bdr: rgba(90,158,59,0.15);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--warm); color: var(--td); overflow-x: hidden; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--warm); }
+::-webkit-scrollbar-thumb { background: var(--ga); border-radius: 10px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 4.5rem;
+  background: rgba(249,247,241,0.94); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--bdr);
+  animation: slideDown 0.6s ease both;
+}
+@keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.logo-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--gd); display: flex; align-items: center; justify-content: center; }
+.logo-mark svg { width: 18px; height: 18px; }
+.logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--gd); letter-spacing: -0.01em; }
+.logo-text em { font-style: normal; color: var(--ga); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tm); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gd); }
+.nav-cta { background: var(--gd); color: var(--cream); padding: 0.55rem 1.3rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.nav-cta:hover { background: var(--gm); transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background: var(--gd);
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  align-items: center; gap: 3rem;
+  padding: 9rem 4.5rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-ring {
+  position: absolute; right: -6%; top: 50%; transform: translateY(-50%);
+  width: 50vw; height: 50vw; border-radius: 50%;
+  border: 1px solid rgba(138,190,82,0.07); pointer-events: none;
+}
+.hero-ring::before { content: ''; position: absolute; inset: 12%; border-radius: 50%; border: 1px solid rgba(138,190,82,0.05); }
+.hero-ring::after { content: ''; position: absolute; inset: 26%; border-radius: 50%; background: radial-gradient(circle, rgba(138,190,82,0.07) 0%, transparent 70%); }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid rgba(138,190,82,0.28); border-radius: 100px;
+  padding: 0.32rem 0.9rem; margin-bottom: 1.8rem;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gl);
+}
+.pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--gl); animation: pulse 2s ease infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5.2vw, 5.5rem); font-weight: 700;
+  color: var(--cream); line-height: 1.04; letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--gl); }
+.hero-body { font-size: 1rem; color: rgba(243,240,230,0.55); line-height: 1.8; max-width: 430px; font-weight: 300; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.btn-lime { background: var(--gl); color: var(--gd); padding: 0.78rem 1.9rem; border-radius: 100px; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; display: inline-block; }
+.btn-lime:hover { background: var(--gl2); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(138,190,82,0.22); }
+.btn-ghost { background: transparent; color: rgba(243,240,230,0.7); border: 1px solid rgba(243,240,230,0.2); padding: 0.78rem 1.9rem; border-radius: 100px; font-size: 0.88rem; font-weight: 400; text-decoration: none; transition: all 0.2s; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(243,240,230,0.5); color: var(--cream); }
+
+.hero-stats { display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 1; }
+.stat-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px; padding: 1.35rem 1.6rem;
+  display: flex; align-items: center; gap: 1.2rem;
+  transition: background 0.2s, transform 0.2s;
+  animation: fadeUp 0.8s ease both;
+}
+.stat-card:nth-child(1) { animation-delay: 0.35s; }
+.stat-card:nth-child(2) { animation-delay: 0.55s; }
+.stat-card:nth-child(3) { animation-delay: 0.75s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.stat-card:hover { background: rgba(255,255,255,0.09); transform: translateX(-5px); }
+.sc-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(138,190,82,0.13); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sc-icon svg { width: 20px; height: 20px; stroke: var(--gl); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sc-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gl); line-height: 1; }
+.sc-label { font-size: 0.74rem; color: rgba(243,240,230,0.42); font-weight: 300; margin-top: 0.2rem; }
+
+/* SECTION BASE */
+section { padding: 7rem 4.5rem; }
+.s-tag { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ga); font-weight: 600; margin-bottom: 0.7rem; }
+.s-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.2vw, 3.1rem); font-weight: 700; color: var(--gd); line-height: 1.12; letter-spacing: -0.02em; }
+.s-sub { font-size: 0.95rem; color: var(--ts); line-height: 1.75; font-weight: 300; max-width: 540px; margin-top: 0.9rem; }
+
+/* PROBLEM */
+.problem { background: var(--cream); }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.problem-intro .s-sub { max-width: 100%; }
+.gap-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 2.5rem; }
+.gap-item { display: flex; gap: 1rem; align-items: flex-start; background: white; border: 1px solid var(--bdr); border-radius: 12px; padding: 1.15rem 1.3rem; transition: all 0.22s; }
+.gap-item:hover { box-shadow: 0 6px 20px rgba(30,61,34,0.08); transform: translateX(4px); }
+.gi-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(90,158,59,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.95rem; }
+.gi-text h4 { font-size: 0.88rem; font-weight: 500; color: var(--gd); margin-bottom: 0.25rem; }
+.gi-text p { font-size: 0.78rem; color: var(--ts); line-height: 1.55; font-weight: 300; }
+
+.mhero { background: var(--gd); border-radius: 14px; padding: 2rem; text-align: center; margin-bottom: 1rem; }
+.mhero-fig { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: var(--gl); line-height: 1; }
+.mhero-label { font-size: 0.73rem; color: rgba(243,240,230,0.48); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.mc-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.mc { background: white; border: 1px solid var(--bdr); border-radius: 12px; padding: 0.95rem 1.3rem; display: flex; justify-content: space-between; align-items: center; }
+.mc-label { font-size: 0.83rem; color: var(--tm); }
+.mc-val { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gd); text-align: right; }
+.mc-sub { font-size: 0.68rem; color: var(--ts); text-align: right; }
+.mc.highlight { border-color: rgba(90,158,59,0.4); }
+.mc.highlight .mc-label { color: var(--ga); font-weight: 500; }
+.mc.highlight .mc-val { color: var(--ga); }
+
+/* HOW IT WORKS */
+.hiw { background: var(--warm); }
+.hiw-head { text-align: center; max-width: 580px; margin: 0 auto 4rem; }
+.hiw-head .s-sub { margin: 0.8rem auto 0; text-align: center; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.step { background: white; border: 1px solid var(--bdr); border-radius: 16px; padding: 2rem 1.7rem; position: relative; overflow: hidden; transition: all 0.25s; }
+.step:hover { box-shadow: 0 12px 36px rgba(30,61,34,0.09); transform: translateY(-4px); border-color: rgba(90,158,59,0.35); }
+.step-num { position: absolute; top: -1rem; right: 1.2rem; font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 700; color: rgba(90,158,59,0.07); line-height: 1; pointer-events: none; }
+.step-icon { width: 44px; height: 44px; border-radius: 11px; background: rgba(90,158,59,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+.step-icon svg { width: 22px; height: 22px; stroke: var(--ga); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.step h3 { font-size: 0.97rem; font-weight: 600; color: var(--gd); margin-bottom: 0.55rem; }
+.step p { font-size: 0.8rem; color: var(--ts); line-height: 1.65; font-weight: 300; }
+
+/* IMPACT */
+.impact { background: var(--gd); }
+.impact .s-title { color: var(--cream); }
+.impact .s-tag { color: var(--gl); }
+.impact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3.5rem; }
+.impact-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ic { background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 1.7rem 1.4rem; transition: background 0.2s; }
+.ic:hover { background: rgba(255,255,255,0.09); }
+.ic.wide { grid-column: span 2; }
+.ic-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--gl); line-height: 1; }
+.ic-label { font-size: 0.74rem; color: rgba(243,240,230,0.45); margin-top: 0.35rem; font-weight: 300; line-height: 1.45; }
+.impact-right .s-sub { color: rgba(243,240,230,0.55); max-width: 100%; }
+.impact-bullets { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.ib { display: flex; gap: 0.85rem; align-items: flex-start; }
+.ib-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gl); flex-shrink: 0; margin-top: 0.45rem; }
+.ib-text { font-size: 0.87rem; color: rgba(243,240,230,0.62); line-height: 1.65; font-weight: 300; }
+
+/* PARTNERSHIP */
+.partner { background: var(--cream); }
+.partner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.pcard { background: white; border: 1px solid var(--bdr); border-radius: 16px; overflow: hidden; }
+.pcard-head { background: var(--gd); padding: 1.5rem 1.8rem; }
+.pcard-head h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--cream); }
+.pcard-head p { font-size: 0.75rem; color: rgba(243,240,230,0.45); margin-top: 0.25rem; font-weight: 300; }
+.pcard-body { padding: 1.6rem 1.8rem; }
+.plist { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+.plist li { display: flex; gap: 0.75rem; font-size: 0.83rem; color: var(--tm); line-height: 1.55; font-weight: 300; }
+.plist li::before { content: '→'; color: var(--ga); font-weight: 600; flex-shrink: 0; }
+.erow { display: flex; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid var(--bdr); font-size: 0.82rem; }
+.erow:last-child { border-bottom: none; }
+.erow .el { color: var(--ts); font-weight: 300; }
+.erow .ev { color: var(--gd); font-weight: 500; }
+.erow.hl .el, .erow.hl .ev { color: var(--ga); font-weight: 600; }
+.econ-note { font-size: 0.7rem; color: var(--ts); margin-top: 1rem; font-style: italic; line-height: 1.5; }
+
+/* CLIENTS */
+.clients { background: var(--warm); text-align: center; }
+.clients-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 3rem; }
+.cpill { background: white; border: 1px solid var(--bdr); border-radius: 100px; padding: 0.55rem 1.4rem; font-size: 0.83rem; color: var(--tm); transition: all 0.2s; cursor: default; }
+.cpill:hover { background: var(--gd); color: var(--cream); border-color: var(--gd); }
+.clients-note { font-size: 0.78rem; color: var(--ts); margin-top: 1.5rem; font-style: italic; }
+
+/* ABOUT */
+.about { background: var(--cream); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.acard { background: white; border: 1px solid var(--bdr); border-radius: 14px; padding: 1.5rem; transition: all 0.2s; }
+.acard:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(30,61,34,0.09); }
+.acard-icon { font-size: 1.2rem; margin-bottom: 0.8rem; }
+.acard h4 { font-size: 0.87rem; font-weight: 600; color: var(--gd); margin-bottom: 0.35rem; }
+.acard p { font-size: 0.77rem; color: var(--ts); line-height: 1.55; font-weight: 300; }
+
+/* CONTACT */
+.contact { background: var(--gd); }
+.contact-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+.contact .s-title { color: var(--cream); }
+.contact .s-tag { color: var(--gl); }
+.contact .s-sub { color: rgba(243,240,230,0.48); margin: 0.9rem auto 3rem; text-align: center; }
+.cform { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fg { display: flex; flex-direction: column; gap: 0.4rem; }
+.fg label { font-size: 0.7rem; color: rgba(243,240,230,0.38); letter-spacing: 0.08em; text-transform: uppercase; }
+.fg input, .fg textarea, .fg select {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 10px; padding: 0.82rem 1rem;
+  color: var(--cream); font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 300;
+  transition: border-color 0.2s, background 0.2s; outline: none; width: 100%;
+  -webkit-appearance: none;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(243,240,230,0.22); }
+.fg select option { background: var(--gd); color: var(--cream); }
+.fg input:focus, .fg textarea:focus, .fg select:focus { border-color: rgba(138,190,82,0.45); background: rgba(255,255,255,0.1); }
+.fg textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  background: var(--gl); color: var(--gd); border: none;
+  padding: 0.9rem 2.2rem; border-radius: 100px;
+  font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; align-self: center; margin-top: 0.5rem;
+}
+.form-submit:hover { background: var(--gl2); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(138,190,82,0.2); }
+.contact-alt { margin-top: 2.5rem; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.ca-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: rgba(243,240,230,0.45); font-weight: 300; }
+.ca-item svg { width: 15px; height: 15px; stroke: var(--gl); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+/* FOOTER */
+footer {
+  background: #111c12; padding: 2rem 4.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: rgba(243,240,230,0.55); }
+.footer-logo em { font-style: normal; color: var(--ga); }
+.footer-copy { font-size: 0.73rem; color: rgba(243,240,230,0.25); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.73rem; color: rgba(243,240,230,0.32); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gl); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 4.5rem 1.5rem; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3.5rem; }
+  .hero-stats { display: none; }
+  .problem-grid, .impact-layout, .about-grid, .partner-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .steps { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#8abe52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+      </svg>
+    </div>
+    <span class="logo-text"><strong>Rebound</strong> <em>Solutions</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#how">Solution</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#partner">Partnership</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div>
+    <div class="hero-badge"><span class="pulse"></span>India's First Scalable Refurbishment Ecosystem</div>
+    <h1>Turning Returns<br>into <em>Revenue.</em></h1>
+    <p class="hero-body">Non-saleable returns across footwear, apparel, and accessories are destroying brand value and landfilling the future. We refurbish them — restoring quality, recovering margins, and closing the circular gap.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-lime">Partner With Us</a>
+      <a href="#how" class="btn-ghost">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="sc-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div><div class="sc-num">91.7%</div><div class="sc-label">Recovery rate from clients</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div><div class="sc-num">₹3,930 Cr</div><div class="sc-label">Non-saleable returns value — annually</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><div class="sc-num">102.5 t</div><div class="sc-label">CO₂ emissions saved so far</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="problem-grid">
+    <div class="problem-intro reveal">
+      <div class="s-tag">The Problem</div>
+      <h2 class="s-title">₹26,200 Cr in returns.<br>Zero recovery channel.</h2>
+      <p class="s-sub">In India, non-saleable returns across fashion and footwear have no structured path to recovery — ending up incinerated or in landfills, costing brands millions in lost value and ESG failures.</p>
+      <div class="gap-list">
+        <div class="gap-item">
+          <div class="gi-icon">📉</div>
+          <div class="gi-text"><h4>Zero brand recovery</h4><p>Non-saleable returns generate ₹0 for brands. The entire loss hits their books while the product is destroyed.</p></div>
+        </div>
+        <div class="gap-item">
+          <div class="gi-icon">⚠️</div>
+          <div class="gi-text"><h4>ESG damage & compliance risk</h4><p>Destruction and unmanaged liquidation expose brands to waste regulations and erode sustainability goals.</p></div>
+        </div>
+        <div class="gap-item">
+          <div class="gi-icon">🏷️</div>
+          <div class="gi-text"><h4>Brand equity erosion</h4><p>Bulk liquidation floods informal markets, destroying pricing power and consumer perception.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="mhero">
+        <div class="mhero-fig">₹26,200 Cr</div>
+        <div class="mhero-label">Estimated annual return value across segments</div>
+      </div>
+      <div class="mc-list">
+        <div class="mc">
+          <span class="mc-label">👟 Footwear · 8–15% return rate</span>
+          <div><div class="mc-val">₹44,000 Cr</div><div class="mc-sub">Market size</div></div>
+        </div>
+        <div class="mc">
+          <span class="mc-label">👔 Apparel · 30–35% return rate</span>
+          <div><div class="mc-val">₹1,50,000 Cr</div><div class="mc-sub">Market size</div></div>
+        </div>
+        <div class="mc">
+          <span class="mc-label">👜 Accessories · 7–8% return rate</span>
+          <div><div class="mc-val">₹44,000 Cr</div><div class="mc-sub">Market size</div></div>
+        </div>
+        <div class="mc highlight">
+          <span class="mc-label">Rebound's opportunity (15% non-saleable)</span>
+          <div><div class="mc-val">₹3,930 Cr</div><div class="mc-sub">Recoverable value</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw" id="how">
+  <div class="hiw-head reveal">
+    <div class="s-tag">The Rebound Solution</div>
+    <h2 class="s-title">One workflow. Full recovery.</h2>
+    <p class="s-sub">A single integrated system — intake to resale — that eliminates delays, leakage, and unnecessary write-offs.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+      <h3>Returns Operations</h3>
+      <p>Full ownership of intake, sorting, and grading. Every unit assessed and logged with zero leakage. A single clean workflow replaces fragmented handoffs.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3>Precision Refurbishment</h3>
+      <p>Brand-specific SOPs for every material — leather, mesh, rubber, suede. Multi-step revival: surface treatment, odour neutralisation, sole restoration, detailing, and QC. Like-new output, every time.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <h3>Graded Resale & Recycling</h3>
+      <p>Units graded as Like New, Refurbished, or Recycle — and routed accordingly. Brand-compliant resale through authorised channels. Non-salvageable units disposed per SWM regulations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="s-tag">Impact So Far</div>
+  <h2 class="s-title">Results that speak<br>for themselves.</h2>
+  <div class="impact-layout">
+    <div class="impact-nums reveal">
+      <div class="ic">
+        <div class="ic-num">91.7%</div>
+        <div class="ic-label">Recovery rate from clients — highest in the industry</div>
+      </div>
+      <div class="ic">
+        <div class="ic-num">2.5 t</div>
+        <div class="ic-label">Waste diverted from landfills to date</div>
+      </div>
+      <div class="ic wide">
+        <div class="ic-num">102.5 t</div>
+        <div class="ic-label">CO₂ emissions saved through sustainable refurbishment — and growing</div>
+      </div>
+    </div>
+    <div class="impact-right reveal">
+      <p class="s-sub">We deliver the highest recovery rates through impactful, sustainable refurbishment — with zero compromise on brand integrity or product quality.</p>
+      <div class="impact-bullets">
+        <div class="ib"><div class="ib-dot"></div><div class="ib-text">A ₹5,000 MRP shoe that would be destroyed recovers ₹4,000 — 80% of its value — through the Rebound process.</div></div>
+        <div class="ib"><div class="ib-dot"></div><div class="ib-text">Recovery potential of 90–96% of MRP when resold as 'like new' — vs ₹0 through conventional write-off or incineration.</div></div>
+        <div class="ib"><div class="ib-dot"></div><div class="ib-text">40+ specialised chemicals and advanced equipment for every material type — leather, suede, mesh, rubber, and more.</div></div>
+        <div class="ib"><div class="ib-dot"></div><div class="ib-text">Proven at scale with Neeman's. Active partnership discussions with Flipkart for returned footwear inventory recovery.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section class="partner" id="partner">
+  <div class="s-tag">Liquidation Partnership</div>
+  <h2 class="s-title">A smarter exit for<br>your returns.</h2>
+  <p class="s-sub">Instead of bulk liquidation at floor price, Rebound offers a structured resale partnership — upfront recovery plus ongoing revenue share on every batch.</p>
+  <div class="partner-grid reveal">
+    <div class="pcard">
+      <div class="pcard-head">
+        <h3>How the partnership works</h3>
+        <p>Structured supply + revenue share model</p>
+      </div>
+      <div class="pcard-body">
+        <ul class="plist">
+          <li>Rebound buys returned/unsold footwear at a fixed lot rate of ₹250/kg — simple, weight-based pricing with no per-pair complexity.</li>
+          <li>We take full ownership of refurbishment, logistics, warehousing, resale, and customer service — zero operational lift on your end.</li>
+          <li>You receive 10% of Rebound's gross profit per batch as ongoing revenue share — paid within 30 days of batch close.</li>
+          <li>Full transparency: per-batch unit economics shared on buy cost, refurb cost, resale price, saleable %, and profit.</li>
+          <li>Starts at a 500-pair pilot. Success triggers a rolling monthly volume commitment.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="pcard-head">
+        <h3>Pilot unit economics</h3>
+        <p>500 pairs · ₹5,000 avg MRP · 78% saleable · ₹250/kg</p>
+      </div>
+      <div class="pcard-body">
+        <div class="erow"><span class="el">Total lot purchase cost</span><span class="ev">₹1,00,000</span></div>
+        <div class="erow"><span class="el">Refurbishment (390 pairs × ₹199)</span><span class="ev">₹77,610</span></div>
+        <div class="erow"><span class="el">Transport + storage</span><span class="ev">₹5,500</span></div>
+        <div class="erow"><span class="el">Total revenue (390 pairs × ₹525)</span><span class="ev">₹2,04,750</span></div>
+        <div class="erow hl"><span class="el">Gross profit</span><span class="ev">₹20,980</span></div>
+        <div class="erow hl"><span class="el">Your revenue share (10%)</span><span class="ev">₹2,098</span></div>
+        <div class="erow hl"><span class="el">Rebound net profit</span><span class="ev">₹18,882</span></div>
+        <p class="econ-note">Conservative base case — margin expands significantly with a ₹7,000 MRP band, saleable rate above 85%, or resale above 10.5% of MRP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients">
+  <div class="s-tag">Brands We Work With</div>
+  <h2 class="s-title">Trusted by brands that care.</h2>
+  <div class="clients-pills reveal">
+    <div class="cpill">Neeman's</div>
+    <div class="cpill">Nike</div>
+    <div class="cpill">Adidas</div>
+    <div class="cpill">Puma</div>
+    <div class="cpill">Skechers</div>
+    <div class="cpill">Woodland</div>
+    <div class="cpill">Red Chief</div>
+  </div>
+  <p class="clients-note">Detailed case study available: Rebound × Neeman's — brand-grade footwear refurbishment at scale.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="s-tag">About Us</div>
+      <h2 class="s-title">Founded to scale circular value recovery.</h2>
+      <p class="s-sub">Rebound Solutions was built on one conviction: every returned product deserves a second life, with quality as uncompromised as day one. We're not just operational — we're strategic partners in your reverse supply chain.</p>
+      <div style="margin-top:2rem;">
+        <a href="#contact" class="btn-lime">Work With Us</a>
+      </div>
+    </div>
+    <div class="about-cards reveal">
+      <div class="acard"><div class="acard-icon">🏭</div><h4>India's first refurbishment hub</h4><p>Built in Bangalore, with expansion to other major cities already underway.</p></div>
+      <div class="acard"><div class="acard-icon">📋</div><h4>Proprietary SOPs & QC</h4><p>Custom-built for each brand's materials, standards, and compliance requirements.</p></div>
+      <div class="acard"><div class="acard-icon">🔗</div><h4>10+ years in supply chain</h4><p>Deep experience in operations, reverse logistics, and circular economy execution.</p></div>
+      <div class="acard"><div class="acard-icon">🌍</div><h4>ESG-aligned by design</h4><p>Every unit refurbished is one less in a landfill — measurable, auditable impact.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="s-tag">Get In Touch</div>
+    <h2 class="s-title">Let's shape the future together.</h2>
+    <p class="s-sub">Whether you're a brand with returns to recover, a platform exploring circular partnerships, or an investor in sustainable logistics — we'd love to talk.</p>
+    <form class="cform" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="fg"><label>Your name</label><input type="text" placeholder="Your full name" required></div>
+        <div class="fg"><label>Company</label><input type="text" placeholder="Brand or company name"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Email</label><input type="email" placeholder="you@company.com" required></div>
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="fg">
+        <label>I'm interested in</label>
+        <select>
+          <option value="">Select an option</option>
+          <option>Refurbishment partnership</option>
+          <option>Liquidation resale model</option>
+          <option>Returns operations outsourcing</option>
+          <option>Investment / funding inquiry</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us about your returns challenge or what you're looking to explore…"></textarea></div>
+      <button type="submit" class="form-submit">Send Message →</button>
+    </form>
+    <div class="contact-alt">
+      <div class="ca-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.56 2 2 0 0 1 3.6 1.38h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        +91 85902 43949
+      </div>
+      <div class="ca-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        jose@reboundsolutions.in
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><strong>Rebound</strong> <em>Solutions</em></div>
+  <div class="footer-copy">© 2026 Rebound Solutions. Bangalore, India.</div>
+  <div class="footer-links">
+    <a href="#problem">Problem</a>
+    <a href="#how">Solution</a>
+    <a href="#impact">Impact</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.step').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.13) + 's';
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Message sent ✓';
+  btn.style.background = '#4e9437';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
